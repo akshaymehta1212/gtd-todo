@@ -1,4 +1,4 @@
-package com.akshay.ToDo;
+package com.gtd.todo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
