@@ -1,19 +1,18 @@
 package com.gtd.todo.service;
 
+import com.gtd.todo.model.ToDoItem;
+import com.gtd.todo.repository.ToDoItemRepository;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.gtd.todo.model.ToDoItem;
-import com.gtd.todo.repository.ToDoItemRepository;
-
 @Service
+@Data
 public class ToDoService {
 	
-	@Autowired
-	ToDoItemRepository toDoItemRepository;
+	private final ToDoItemRepository toDoItemRepository;
 	
 	public List<ToDoItem> getAllToDos(){
 		List<ToDoItem> toDoItems = new ArrayList<ToDoItem>();
