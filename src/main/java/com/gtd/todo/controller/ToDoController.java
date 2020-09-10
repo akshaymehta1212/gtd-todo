@@ -6,14 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.gtd.todo.model.ToDoItem;
 import com.gtd.todo.service.ToDoService;
@@ -38,7 +31,7 @@ public class ToDoController {
 	}
 	
 	@PostMapping("/toDoItems")
-	public void createToDo(ToDoItem toDoItem){
+	public void createToDo(@RequestBody ToDoItem toDoItem){
 		 toDoService.save(toDoItem);
 	}
 	
