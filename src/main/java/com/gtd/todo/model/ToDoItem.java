@@ -11,10 +11,9 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="todoitems")
+@Table(name = "todoitems")
 public class ToDoItem {
-	
-	
+
 	private int task_id;
 	
 	private String taskType;
@@ -24,17 +23,18 @@ public class ToDoItem {
 	private Date createdOn;
 	
 	
-	public ToDoItem() {}
-	
-	
-	/*public ToDoItem(String taskType, String taskDetails,Date createdOn ) {
-		//this.task_id
+	public ToDoItem() {
+
+	}
+
+	public ToDoItem(int task_id, String taskType, String taskDetails, Date createdOn) {
+		this.task_id = task_id;
 		this.taskType = taskType;
 		this.taskDetails = taskDetails;
 		this.createdOn = createdOn;
-	}*/
+	}
 	
-	@Id 
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getTask_id() {
 		return task_id;
@@ -43,7 +43,6 @@ public class ToDoItem {
 		this.task_id = task_id;
 	}
 	
-	@Column(name="taskType",nullable = false)
 	public String getTaskType() {
 		return taskType;
 	}
@@ -51,7 +50,6 @@ public class ToDoItem {
 		this.taskType = taskType;
 	}
 	
-	@Column(name="taskDetails",nullable = false)
 	public String getTaskDetails() {
 		return taskDetails;
 	}
@@ -59,7 +57,6 @@ public class ToDoItem {
 		this.taskDetails = taskDetails;
 	}
 	
-	@Column(name="createdOn",nullable = false)
 	public Date getCreatedOn() {
 		return createdOn;
 	}
