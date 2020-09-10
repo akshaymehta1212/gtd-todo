@@ -37,7 +37,7 @@ public class ToDoController {
 	
 	@PutMapping("/toDoItems/{toDoId}")
 	public ResponseEntity<ToDoItem> updateTaskById(@PathVariable(value="toDoId") int taskId,
-			ToDoItem toDoItemDetails){
+			@RequestBody ToDoItem toDoItemDetails){
 		ToDoItem toDoItem = toDoService.getToDoItemById(taskId);
 		
 		toDoItem.setTaskType(toDoItemDetails.getTaskType());
