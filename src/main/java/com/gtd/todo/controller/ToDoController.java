@@ -45,13 +45,13 @@ public class ToDoController {
 	@PutMapping("/toDoItems/{toDoId}")
 	public ResponseEntity<ToDoItem> updateTaskById(@PathVariable(value="toDoId") int taskId,
 			@RequestBody ToDoItem toDoItemDetails){
-		ToDoItem toDoItem = toDoService.getToDoItemById(taskId);
+		/*ToDoItem toDoItem = toDoService.getToDoItemById(taskId);
 		
 		toDoItem.setTaskType(toDoItemDetails.getTaskType());
 		toDoItem.setTaskDetails(toDoItemDetails.getTaskDetails());
-		toDoItem.setCreatedOn(toDoItemDetails.getCreatedOn());
+		toDoItem.setCreatedOn(toDoItemDetails.getCreatedOn());*/
 		
-		final ToDoItem newToDoItem = toDoService.save(toDoItem);
+		final ToDoItem newToDoItem = toDoService.save(toDoItemDetails);
 		return ResponseEntity.ok().body(newToDoItem);
 		
 	}

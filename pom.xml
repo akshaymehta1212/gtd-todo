@@ -67,7 +67,7 @@
             <scope>test</scope>
             <!-- Below is commented as it is for junit backward compatibility
              and due that exclusion maven not running other test then spring boot tests-->
-            <!--<exclusions>
+            <!--<exclusions>pr
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
