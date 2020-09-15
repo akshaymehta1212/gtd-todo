@@ -1,6 +1,5 @@
-package om.gtd.todo.controller;
+package com.gtd.todo.controller;
 
-import com.gtd.todo.controller.ToDoController;
 import com.gtd.todo.model.ToDoItem;
 import com.gtd.todo.service.ToDoService;
 import org.junit.Before;
