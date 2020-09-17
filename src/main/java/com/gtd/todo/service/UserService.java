@@ -1,25 +1,20 @@
 package com.gtd.todo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.gtd.todo.model.ToDoItem;
 import com.gtd.todo.model.User;
 import com.gtd.todo.repository.UserRepository;
+import lombok.Data;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
+@Data
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public List<User> getAllUsers() {
-        List<User> users = new ArrayList<User>();
-        userRepository.findAll().forEach(items -> users.add(items));
-        return users;
+        return userRepository.findAll();
     }
 
     public User getUserById(int id) {
