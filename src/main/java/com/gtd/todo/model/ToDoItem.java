@@ -1,15 +1,12 @@
 package com.gtd.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -20,12 +17,18 @@ import java.util.Date;
 public class ToDoItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int task_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int taskId;
     private String taskType;
     private String taskName;
     private String taskDetails;
     private Date createdOn;
     private Boolean isDone;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
+
 
 }
