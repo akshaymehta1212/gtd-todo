@@ -7,7 +7,6 @@ import com.gtd.todo.repository.UserRepository;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,12 +28,8 @@ public class ToDoService {
         return toDoItemRepository.save(toDoItem);
     }
 
-    public void delete(int id) {
-        toDoItemRepository.deleteById(id);
-    }
-
-    public List<ToDoItem> getTasksByUserIdAndToDoId(int taskid, User userid) {
-        return toDoItemRepository.findByTaskIdAndUser(taskid, userid);
+    public List<ToDoItem> getTasksByUserIdAndToDoId(int taskId, User userId) {
+        return toDoItemRepository.findByTaskIdAndUser(taskId, userId);
     }
 
 }

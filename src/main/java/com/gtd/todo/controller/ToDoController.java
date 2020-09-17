@@ -22,7 +22,6 @@ import java.util.List;
 @Data
 public class ToDoController {
 
-
     private final ToDoService toDoService;
     private final UserService userService;
 
@@ -32,18 +31,18 @@ public class ToDoController {
     }
 
     @GetMapping("/users/{userId}/toDoItems/{toDoId}")
-    public List<ToDoItem> getAllTasks(@PathVariable(value = "userId") User userId,
-                                      @PathVariable(value = "toDoId") int toDoId) {
+    public List<ToDoItem> getAllTasks(@PathVariable(value = "toDoId") int toDoId,
+                                      @PathVariable(value = "userId") User userId) {
         return toDoService.getTasksByUserIdAndToDoId(toDoId, userId);
     }
 
-    @PostMapping("/users/{userId}/toDoItems")
+    @PostMapping("/users/{userId}/createToDo")
     public ToDoItem createToDo(@PathVariable(value = "userId") int userId, @RequestBody ToDoItem toDoItem) {
 		toDoItem.setUser(userService.getUserById(userId));
         return toDoService.saveOrUpdate(toDoItem);
     }
 
-    @PutMapping("users/{userId}/toDoItems")
+    @PutMapping("users/{userId}/updateToDo")
     public ToDoItem updateToDo(@PathVariable(value = "userId") int userId,
                                @RequestBody ToDoItem toDoItemRequest) {
         toDoItemRequest.setUser(userService.getUserById(userId));
