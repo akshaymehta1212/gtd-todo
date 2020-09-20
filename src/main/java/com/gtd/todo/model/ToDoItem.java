@@ -19,11 +19,14 @@ public class ToDoItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int taskId;
-    private String taskType;
+    private String priority;
     private String taskName;
     private String taskDetails;
     private Date createdOn;
     private Boolean isDone;
+    private Date lastUpdated;
+
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")

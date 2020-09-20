@@ -42,7 +42,7 @@ public class ToDoController {
         return toDoService.saveOrUpdate(toDoItem);
     }
 
-    @PutMapping("users/{userId}/updateToDo")
+    @PutMapping("/users/{userId}/updateToDo")
     public ToDoItem updateToDo(@PathVariable(value = "userId") int userId,
                                @RequestBody ToDoItem toDoItemRequest) {
         toDoItemRequest.setUser(userService.getUserById(userId));
