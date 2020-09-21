@@ -16,7 +16,7 @@ public class ToDoTestUtil {
     }
 
     public static ToDoItem getToDoItem() {
-        return new ToDoItem(1, TaskPriority.MEDIUM.getPriority(), "Test",
+        return new ToDoItem(1, TaskPriority.MEDIUM, "Test",
                 "testDetails", new Date(), false, new Date(),getUser());
     }
 

@@ -1,6 +1,7 @@
 package com.gtd.todo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javafx.concurrent.Task;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,7 +20,8 @@ public class ToDoItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int taskId;
-    private String priority;
+    @Convert(converter = TaskPriorityConverter.class)
+    private TaskPriority priority;
     private String taskName;
     private String taskDetails;
     private Date createdOn;

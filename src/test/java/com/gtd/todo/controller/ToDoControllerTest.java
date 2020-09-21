@@ -1,5 +1,6 @@
 package com.gtd.todo.controller;
 
+import com.gtd.todo.model.TaskPriority;
 import com.gtd.todo.model.ToDoItem;
 import com.gtd.todo.model.User;
 import com.gtd.todo.service.ToDoService;
@@ -30,6 +31,9 @@ public class ToDoControllerTest {
 
     @Before
     public void setup() {
+        for(TaskPriority task: TaskPriority.values()) {
+            System.out.println(task + task.getPriority());
+        }
         toDoController = new ToDoController(toDoService, userService);
         when(toDoService.getAllTaskByUserId(user)).thenReturn(ToDoTestUtil.getToDoList());
         when(toDoService.getTasksByUserIdAndToDoId(1, user)).thenReturn(ToDoTestUtil.getToDoList());
