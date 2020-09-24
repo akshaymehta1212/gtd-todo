@@ -11,11 +11,12 @@ CREATE TABLE users(
 
 CREATE TABLE todoitems (
   task_id NUMERIC AUTO_INCREMENT  PRIMARY KEY,
-  task_type VARCHAR(250) NOT NULL,
+  priority VARCHAR(250) CHECK (priority in ('Low','Medium','High'))  AND NOT NULL ,
   task_name VARCHAR(250) NOT NULL,
   task_details VARCHAR(250) NOT NULL,
   created_on DATE DEFAULT NULL,
   is_done BOOLEAN ,
+  last_updated DATE,
   user_id NUMERIC,
   FOREIGN KEY (user_id) REFERENCES users(uid)
 );

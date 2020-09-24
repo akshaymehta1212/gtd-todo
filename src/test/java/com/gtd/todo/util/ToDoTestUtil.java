@@ -1,11 +1,13 @@
 package com.gtd.todo.util;
 
+import com.gtd.todo.model.TaskPriority;
 import com.gtd.todo.model.ToDoItem;
 import com.gtd.todo.model.User;
 
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class ToDoTestUtil {
 
@@ -14,8 +16,8 @@ public class ToDoTestUtil {
     }
 
     public static ToDoItem getToDoItem() {
-        return new ToDoItem(1, "work", "Test",
-                "testDetails", new Date(), false, getUser());
+        return new ToDoItem(1, TaskPriority.MEDIUM, "Test",
+                "testDetails", new Date(), false, new Date(),getUser());
     }
 
     public static List<ToDoItem> getToDoList() {
