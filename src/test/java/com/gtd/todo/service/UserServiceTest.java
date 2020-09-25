@@ -38,7 +38,7 @@ public class UserServiceTest {
 
     @Test
     public void testGetUserById() {
-        assertEquals(userService.getUserById(1), ToDoTestUtil.getUser());
+        assertEquals(userService.getUserByUsername("username"), ToDoTestUtil.getUser());
         verify(userRepository, times(1)).findById(1);
     }
 

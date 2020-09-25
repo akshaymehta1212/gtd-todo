@@ -31,7 +31,7 @@ public class UserControllerTest {
     public void setup() {
         userController = new UserController(userService, toDoService);
         when(userService.getAllUsers()).thenReturn(ToDoTestUtil.getUserList());
-        when(userService.getUserById(1)).thenReturn(user);
+        when(userService.getUserByUsername("test")).thenReturn(user);
         when(userService.saveOrUpdate(user)).thenReturn(user);
     }
 
@@ -44,8 +44,8 @@ public class UserControllerTest {
 
     @Test
     public void testGetUserById() {
-        assertEquals(userController.getUserById(1), ResponseEntity.ok().body(user));
-        verify(userService, times(1)).getUserById(1);
+        assertEquals(userController.getUserByUsername("test"), ResponseEntity.ok().body(user));
+        verify(userService, times(1)).getUserByUsername("test");
     }
 
     @Test

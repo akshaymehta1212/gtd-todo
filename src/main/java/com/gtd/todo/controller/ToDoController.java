@@ -1,7 +1,6 @@
 package com.gtd.todo.controller;
 
 import com.gtd.todo.model.ToDoItem;
-import com.gtd.todo.model.User;
 import com.gtd.todo.service.ToDoService;
 import com.gtd.todo.service.UserService;
 import lombok.Data;
@@ -18,35 +17,36 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 @Data
 public class ToDoController {
 
     private final ToDoService toDoService;
     private final UserService userService;
 
-    @GetMapping("/users/{userId}/toDoItems")
-    public List<ToDoItem> getAllTasksById(@PathVariable(value = "userId") User userId) {
-        return toDoService.getAllTaskByUserId(userId);
+    @GetMapping("{username}/todos")
+    public List<ToDoItem> getAllTasksById(@PathVariable(value = "username") String username) {
+        return toDoService.getAllTaskByUsername(username);
     }
 
-    @GetMapping("/users/{userId}/toDoItems/{toDoId}")
+    @GetMapping("{username}/todos/{toDoId}")
     public List<ToDoItem> getAllTasks(@PathVariable(value = "toDoId") int toDoId,
-                                      @PathVariable(value = "userId") User userId) {
-        return toDoService.getTasksByUserIdAndToDoId(toDoId, userId);
+                                      @PathVariable(value = "username") String username) {
+        return toDoService.getTasksByUsernameAndToDoId(toDoId, username);
     }
 
-    @PostMapping("/users/{userId}/createToDo")
-    public ToDoItem createToDo(@PathVariable(value = "userId") int userId, @RequestBody ToDoItem toDoItem) {
-		toDoItem.setUser(userService.getUserById(userId));
+    @PostMapping("{username}/createToDo")
+    public ToDoItem createToDo(@PathVariable(value = "username") String username, 
+    							@RequestBody ToDoItem toDoItem) {
+		toDoItem.setUsername(username);
         return toDoService.saveOrUpdate(toDoItem);
     }
 
-    @PutMapping("/users/{userId}/updateToDo")
-    public ToDoItem updateToDo(@PathVariable(value = "userId") int userId,
-                               @RequestBody ToDoItem toDoItemRequest) {
-        toDoItemRequest.setUser(userService.getUserById(userId));
-        return toDoService.saveOrUpdate(toDoItemRequest);
+    @PutMapping("{username}/updateToDo")
+    public ToDoItem updateToDo(@PathVariable(value = "username") String username,
+                               @RequestBody ToDoItem toDoItem) {
+    	toDoItem.setUsername(username);
+        return toDoService.saveOrUpdate(toDoItem);
     }
 
 }

@@ -7,12 +7,11 @@ import com.gtd.todo.model.User;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.PriorityQueue;
 
 public class ToDoTestUtil {
 
     public static User getUser() {
-        return new User(1, "test", "test@test.in", "password");
+        return new User("test", "password");
     }
 
     public static ToDoItem getToDoItem() {

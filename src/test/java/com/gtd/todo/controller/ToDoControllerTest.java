@@ -37,7 +37,7 @@ public class ToDoControllerTest {
         toDoController = new ToDoController(toDoService, userService);
         when(toDoService.getAllTaskByUserId(user)).thenReturn(ToDoTestUtil.getToDoList());
         when(toDoService.getTasksByUserIdAndToDoId(1, user)).thenReturn(ToDoTestUtil.getToDoList());
-        when(userService.getUserById(1)).thenReturn(user);
+        when(userService.getUserByUsername("test")).thenReturn(user);
         when(toDoService.saveOrUpdate(toDoItem)).thenReturn(toDoItem);
     }
 
@@ -57,15 +57,15 @@ public class ToDoControllerTest {
 
     @Test
     public void testCreateToDo() {
-        assertEquals(toDoController.createToDo(1, toDoItem), toDoItem);
-        verify(userService, times(1)).getUserById(1);
+        assertEquals(toDoController.createToDo("test", toDoItem), toDoItem);
+        verify(userService, times(1)).getUserByUsername("test");
         verify(toDoService, times(1)).saveOrUpdate(toDoItem);
     }
 
     @Test
     public void testUpdateToDo() {
-        assertEquals(toDoController.updateToDo(1, toDoItem), toDoItem);
-        verify(userService, times(1)).getUserById(1);
+        assertEquals(toDoController.updateToDo("test", toDoItem), toDoItem);
+        verify(userService, times(1)).getUserByUsername("test");
         verify(toDoService, times(1)).saveOrUpdate(toDoItem);
     }
 

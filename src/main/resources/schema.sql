@@ -2,9 +2,7 @@ DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS todoitems;
 
 CREATE TABLE users(
-    uid NUMERIC AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(250) NOT NULL,
-    email VARCHAR(250) NOT NULL,
     password VARCHAR(250) NOT NULL
 
 );
@@ -17,8 +15,8 @@ CREATE TABLE todoitems (
   created_on DATE DEFAULT NULL,
   is_done BOOLEAN ,
   last_updated DATE,
-  user_id NUMERIC,
-  FOREIGN KEY (user_id) REFERENCES users(uid)
+  username varchar(250),
+  FOREIGN KEY (username) REFERENCES users(username)
 );
 
 

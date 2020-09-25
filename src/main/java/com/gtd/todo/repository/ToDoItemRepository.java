@@ -1,6 +1,5 @@
 package com.gtd.todo.repository;
 
-import com.gtd.todo.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ToDoItemRepository extends JpaRepository<ToDoItem, Integer> {
 
-    List<ToDoItem> findByUser(User userId);
-    List<ToDoItem> findByTaskIdAndUser(int taskId,User userId);
+    List<ToDoItem> findByUsername(String username);
+    List<ToDoItem> findByTaskIdAndUsername(int taskId, String username);
 
 }

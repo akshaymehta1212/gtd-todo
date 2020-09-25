@@ -16,9 +16,13 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
-    public User getUserById(int id) {
-        return userRepository.findById(id).get();
+    
+    public boolean isUsernameExists(String username) {
+    	return userRepository.existsByUsername(username);
+    }
+    
+    public User getUserByUsername(String username) {
+    	return userRepository.findByUsername(username);
     }
 
     public User saveOrUpdate(User user) {

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import com.gtd.todo.model.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer>{
+public interface UserRepository extends JpaRepository<User, String>{
 
+	User findByUsername(String username);
+	boolean existsByUsername(String username);
+	
 }
